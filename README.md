@@ -18,6 +18,6 @@ The course lectures can be found here:
 https://www.youtube.com/playlist?list=PLDcUM9US4XdMROZ57-OIRtIK0aOynbgZN
 
 For practice answer, I used several sources:
-https://gregor-mathes.netlify.app/post/
-https://www.erikkusch.com/courses/rethinking/
-https://jmgirard.com/
+1. https://gregor-mathes.netlify.app/post/
+2. https://www.erikkusch.com/courses/rethinking/
+3. https://jmgirard.com/
