@@ -589,5 +589,26 @@ mu <- link(model_wine8H7,wine_predict)
 mu_mean <- apply(mu,2,mean)
 mu_PI <- apply(mu,2,PI,prob=0.97)
 plot(mu_mean)
-# Highest score is for group 5, American judge drinking French red wine
-# Lowest score is for group 2, French judge drinking American red wine
+
+# Now plot in a bit nice way
+library(ggplot2)
+prediction <- as.data.frame(t(rbind(mu_mean,mu_PI)))
+prediction$group <- c("FwFjR","AwFjR","FwFjW","AwFjW","FwAjR","AwAjR","FwAjW",
+                      "AwAjW")
+colnames(prediction) <- c("mu_mean","low_PI","high_PI")
+plot(1:8,
+     prediction$mu_mean,
+     xlab = "Categories",
+     ylab = "Mean & Standard Deviation of Wine score",
+     xaxt = "n",
+     ylim = c(0.5,0.9))
+segments(x0 = 1:8,    # Add standard deviations
+         y0 = prediction$low_PI,
+         x1 = 1:8,
+         y1 = prediction$high_PI)
+axis(side = 1,                                 # Add x-axis labels
+     at = 1:8,
+     labels = prediction$group)
+
+# Highest score is for American judge drinking French red wine
+# Lowest score is for French judge drinking American red wine
